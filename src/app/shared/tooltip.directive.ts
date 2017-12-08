@@ -5,54 +5,54 @@ import { Directive, HostListener, Renderer, ElementRef, Input } from '@angular/c
     selector: '[tooltip]'
 })
 export class TooltipDirective{
+    //Input tooltip text from the button / any input controls etc
     @Input() tooltip : string;
+    
     constructor(
         private renderer: Renderer,
         private el: ElementRef
     ){}
+
     @HostListener('mouseenter') onMouseEnter() {
+        //this.showToolTip();
     }
 
     @HostListener('mouseleave') onMouseLeave() {
+        //this.hideToolTip();
     }
 
     @HostListener('document:click', ['$event']) clickout(event) {
+      //Click outside the Host container  
       if(!this.el.nativeElement.contains(event.target)) {
-            //show the tooltip
             this.hideToolTip();
-      } else {
-            //clicked outside the button and any part in a document
-            //Hide the tooltip
-            this.showToolTip();
-      }
+      } 
     }
 
     @HostListener('click', ['$event.target']) onClick(btn) {
-        //console.log("button", btn, "number of clicks:", this.numberOfClicks++);
-        console.log('clicked');
+        //Click inside the Host container
         setTimeout(() => {
             this.showToolTip();
         }, 50);
-        
     }
 
     @HostListener('document:keydown.escape', ['$event']) onKeydownHandler(evt: KeyboardEvent) {
+        //ESC button click
         this.hideToolTip();
     }
 
     showToolTip(){
-        var container =  document.getElementById("divContainer");
+        let container =  document.getElementById("divContainer");
         container.innerHTML = this.tooltip;
-        var topPos = this.el.nativeElement.offsetTop;
-        var leftPos = this.el.nativeElement.offsetLeft;
-        var postionTop = "top:" + (topPos - 50).toString() + "px;";
-        var postionleft = "left:" + (leftPos - 20).toString() + "px;";
+        let topPos = this.el.nativeElement.offsetTop;
+        let leftPos = this.el.nativeElement.offsetLeft;
+        let postionTop = "top:" + (topPos - 50).toString() + "px;";
+        let postionleft = "left:" + (leftPos - 20).toString() + "px;";
 
         container.setAttribute("style", "display:inline;position:absolute;color:red; border: 1px solid blue;width:200px;"+postionTop + postionleft);
     }
 
     hideToolTip(){
-        var container =  document.getElementById("divContainer");
+        let container =  document.getElementById("divContainer");
         container.setAttribute("style", "display:none;");
     }
 
