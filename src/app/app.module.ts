@@ -5,12 +5,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import {SharedModule} from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
-import { SupportComponent } from './support/support.component';
+import { TooltipDemoComponent } from './tooltip-demo/tooltipdemo.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'support', component: SupportComponent },
+  { path: 'tooltipdemo', component: TooltipDemoComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/pagenotfound' },
 ];
@@ -19,7 +19,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    SupportComponent,
+    TooltipDemoComponent,
     PagenotfoundComponent
   ],
   imports: [
