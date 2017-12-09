@@ -45,10 +45,10 @@ export class TooltipDirective{
         container.innerHTML = this.tooltip;
         let topPos = this.el.nativeElement.offsetTop;
         let leftPos = this.el.nativeElement.offsetLeft;
-        let postionTop = "top:" + (topPos - 50).toString() + "px;";
-        let postionleft = "left:" + (leftPos - 20).toString() + "px;";
+        let postionTop = "top:" + (topPos - 70).toString() + "px;";
+        let postionleft = "left:" + (leftPos - 60).toString() + "px;";
 
-        container.setAttribute("style", "display:inline;position:absolute;color:red; border: 1px solid blue;width:200px;"+postionTop + postionleft);
+        container.setAttribute("style", "display:inline;position:absolute;width:200px;height:50px;"+postionTop + postionleft);
     }
 
     hideToolTip(){

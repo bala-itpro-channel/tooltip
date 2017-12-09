@@ -3,14 +3,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import {SharedModule} from './shared/shared.module';
+import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { TooltipDemoComponent } from './tooltip-demo/tooltipdemo.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { TooltipDemoModule } from './tooltip-demo/tooltipdemo.module';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'tooltipdemo', component: TooltipDemoComponent },
+  { path: 'tooltipdemo', loadChildren : './tooltip-demo/tooltipdemo.module#TooltipDemoModule' },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/pagenotfound' },
 ];
@@ -19,12 +20,12 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    TooltipDemoComponent,
+    //TooltipDemoComponent,
     PagenotfoundComponent
   ],
   imports: [
-    BrowserModule, 
-    SharedModule, 
+    BrowserModule,      
+    //TooltipDemoModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
