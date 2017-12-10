@@ -6,4 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./tooltipdemo.component.css']
 })
 export class TooltipDemoComponent {
+  tooltipcontent: string = "tooltip content text here";
 }
