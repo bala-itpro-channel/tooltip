@@ -48,7 +48,7 @@ export class TooltipDirective{
         let postionTop = "top:" + (topPos - 70).toString() + "px;";
         let postionleft = "left:" + (leftPos - 60).toString() + "px;";
 
-        container.setAttribute("style", "display:inline;position:absolute;width:200px;height:50px;"+postionTop + postionleft);
+        container.setAttribute("style", "padding:5px;font-size:10px;display:inline;position:absolute;width:200px;height:50px;"+postionTop + postionleft);
     }
 
     hideToolTip(){
