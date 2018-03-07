@@ -5,9 +5,9 @@ import { TooltipContainerComponent } from './tooltip-container';
 import { TooltipDirective } from './tooltip.directive';
 @NgModule({
     imports: [ CommonModule ],
-    declarations: [ TooltipContainerComponent, TooltipDirective ],
+    declarations: [ TooltipDirective, TooltipContainerComponent ],
     providers: [],
-    exports: [TooltipContainerComponent, TooltipDirective]
+    exports: [TooltipDirective, TooltipContainerComponent]
 })
 
 export class SharedModule { }

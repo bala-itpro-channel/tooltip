@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { TooltipDemoComponent } from './tooltip-demo/tooltipdemo.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { TooltipDemoModule } from './tooltip-demo/tooltipdemo.module';
+import { GraphicsTooltipComponent } from './graphics-tooltip/graphics-tooltip.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -20,12 +21,11 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    //TooltipDemoComponent,
+    GraphicsTooltipComponent,
     PagenotfoundComponent
   ],
   imports: [
-    BrowserModule,      
-    //TooltipDemoModule,
+    BrowserModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

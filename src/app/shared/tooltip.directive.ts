@@ -1,17 +1,21 @@
 // ./app/shared/underline.directive.ts
-import { Directive, HostListener, Renderer, ElementRef, Input } from '@angular/core';
+import { Directive, HostListener, Renderer2, ElementRef, Input, TemplateRef,
+  ComponentRef, Type, ViewContainerRef, ComponentFactoryResolver, Injector } from '@angular/core';
 
 @Directive({
     selector: '[tooltip]'
 })
 export class TooltipDirective{
-    //Input tooltip text from the button / any input controls etc
-    @Input() tooltip : string;
-    
+    // Input tooltip text from the button / any input controls etc
+    @Input() tooltip: string | TemplateRef<any> | Type<any>;
+    private componentRef: ComponentRef<any>;
+
     constructor(
-        private renderer: Renderer,
-        private el: ElementRef
-    ){}
+        private renderer: Renderer2,
+        private el: ElementRef,
+        private injector: Injector,
+        private resolver: ComponentFactoryResolver,
+        private vcr: ViewContainerRef ) {}
 
     @HostListener('mouseenter') onMouseEnter() {
         //this.showToolTip();
@@ -22,10 +26,10 @@ export class TooltipDirective{
     }
 
     @HostListener('document:click', ['$event']) clickout(event) {
-      //Click outside the Host container  
+      //Click outside the Host container
       if(!this.el.nativeElement.contains(event.target)) {
             this.hideToolTip();
-      } 
+      }
     }
 
     @HostListener('click', ['$event.target']) onClick(btn) {
