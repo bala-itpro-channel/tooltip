@@ -15,11 +15,14 @@ export class TooltipContainerDirective {
   styles: [
     `
     .tooltip-container {
-      background-color: black;
+      background-color: white;
       color: #fff;
       display: inline-block;
-      padding: 0.5em;
+      padding: 0.4em;
       position: absolute;
+      border-style: solid;
+      border-color: coral;
+      background: gray;
     }
   `
 ]

@@ -20,5 +20,12 @@
     Graphics tooltip here...
   </div>
 
+  <div [tooltip]="templateContent">
+      Template tooltip here...
+  </div>
+  <br><br>
+  <ng-template #templateContent>
+      <span style="color: black;"><i>Tooltip from ng-template ref</i></span>
+  </ng-template>
 
 </div>

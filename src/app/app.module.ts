@@ -9,6 +9,8 @@ import { TooltipDemoComponent } from './tooltip-demo/tooltipdemo.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { TooltipDemoModule } from './tooltip-demo/tooltipdemo.module';
 import { GraphicsTooltipComponent } from './graphics-tooltip/graphics-tooltip.component';
+import { TooltipContainerComponent, TooltipContainerDirective } from './shared/tooltip-container';
+
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'tooltipdemo', loadChildren : './tooltip-demo/tooltipdemo.module#TooltipDemoModule' },
@@ -21,7 +23,9 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     GraphicsTooltipComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    TooltipContainerComponent,
+    TooltipContainerDirective
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,7 @@ const appRoutes: Routes = [
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [GraphicsTooltipComponent]
+  entryComponents: [TooltipContainerComponent, GraphicsTooltipComponent]
 })
 
 export class AppModule { }

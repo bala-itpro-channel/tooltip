@@ -4,6 +4,7 @@ import { Directive, HostListener, Renderer2, ElementRef, Input, TemplateRef,
   ReflectiveInjector, OnDestroy } from '@angular/core';
 // import { GraphicsTooltipComponent } from '../graphics-tooltip/graphics-tooltip.component';
 import { TooltipContainerComponent } from './tooltip-container';
+import { GraphicsTooltipComponent } from '../graphics-tooltip/graphics-tooltip.component';
 @Directive({
     selector: '[tooltip]'
 })
@@ -50,6 +51,11 @@ export class TooltipDirective implements OnDestroy {
         return [ viewRef.rootNodes ];
       }
 
+      // Else component content
+      const factory = this.resolver.resolveComponentFactory(this.tooltip);
+      const viewRef = factory.create(this.injector);
+
+      return [ [ viewRef.location.nativeElement ] ];
     }
 
     destroy() {
