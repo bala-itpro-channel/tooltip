@@ -1,14 +1,16 @@
 // ./app/shared/underline.directive.ts
 import { Directive, HostListener, Renderer2, ElementRef, Input, TemplateRef,
-  ComponentRef, Type, ViewContainerRef, ComponentFactoryResolver, Injector } from '@angular/core';
-
+  ComponentRef, Type, ViewContainerRef, ComponentFactoryResolver, Injector,
+  ReflectiveInjector, OnDestroy } from '@angular/core';
+// import { GraphicsTooltipComponent } from '../graphics-tooltip/graphics-tooltip.component';
+import { TooltipContainerComponent } from './tooltip-container';
 @Directive({
     selector: '[tooltip]'
 })
-export class TooltipDirective{
+export class TooltipDirective implements OnDestroy {
     // Input tooltip text from the button / any input controls etc
     @Input() tooltip: string | TemplateRef<any> | Type<any>;
-    private componentRef: ComponentRef<any>;
+    private componentRef: ComponentRef<TooltipContainerComponent>;
 
     constructor(
         private renderer: Renderer2,
@@ -18,46 +20,63 @@ export class TooltipDirective{
         private vcr: ViewContainerRef ) {}
 
     @HostListener('mouseenter') onMouseEnter() {
-        //this.showToolTip();
+      if ( this.componentRef ) { return; }
+
+      const factory = this.resolver.resolveComponentFactory(TooltipContainerComponent);
+      const injector = ReflectiveInjector.resolveAndCreate([
+        {
+          provide: 'tooltipConfig',
+          useValue: {
+            host: this.el.nativeElement  // pass the host to the tooltip container
+          }
+        }
+      ]);
+
+      this.componentRef = this.vcr.createComponent( factory, 0, injector, this.generateToolContent() );
+    }
+
+    generateToolContent() {
+      // Check the input is string
+      if ( typeof this.tooltip === 'string') {
+        const element = this.renderer.createText(this.tooltip);
+
+        return [ [ element ] ];
+      }
+
+      // Check the input is Template (ng-template)
+      if ( this.tooltip instanceof TemplateRef ) {
+        const viewRef = this.tooltip.createEmbeddedView({});
+
+        return [ viewRef.rootNodes ];
+      }
+
+    }
+
+    destroy() {
+      this.componentRef && this.componentRef.destroy();
+      this.componentRef = null;
     }
 
     @HostListener('mouseleave') onMouseLeave() {
-        //this.hideToolTip();
+      this.destroy();
     }
 
     @HostListener('document:click', ['$event']) clickout(event) {
-      //Click outside the Host container
-      if(!this.el.nativeElement.contains(event.target)) {
-            this.hideToolTip();
-      }
+      // Click outside the Host container
     }
 
     @HostListener('click', ['$event.target']) onClick(btn) {
-        //Click inside the Host container
-        setTimeout(() => {
-            this.showToolTip();
-        }, 50);
+        // Click inside the Host container
     }
 
     @HostListener('document:keydown.escape', ['$event']) onKeydownHandler(evt: KeyboardEvent) {
-        //ESC button click
-        this.hideToolTip();
+        // ESC button click
     }
 
-    showToolTip(){
-        let container =  document.getElementById("divContainer");
-        container.innerHTML = this.tooltip;
-        let topPos = this.el.nativeElement.offsetTop;
-        let leftPos = this.el.nativeElement.offsetLeft;
-        let postionTop = "top:" + (topPos - 70).toString() + "px;";
-        let postionleft = "left:" + (leftPos - 60).toString() + "px;";
-
-        container.setAttribute("style", "padding:5px;font-size:0.75rem;display:inline;position:absolute;width:200px;height:50px;"+postionTop + postionleft);
-    }
-
-    hideToolTip(){
-        let container =  document.getElementById("divContainer");
-        container.setAttribute("style", "display:none;");
+    ngOnDestroy() {
+      //Called once, before the instance is destroyed.
+      //Add 'implements OnDestroy' to the class.
+      this.destroy();
     }
 
 }

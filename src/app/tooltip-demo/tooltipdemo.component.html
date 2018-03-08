@@ -1,5 +1,4 @@
 <div style="text-align:center">
-  <tooltip-container>loading</tooltip-container>
   <div style="width:500px;height:300px">
       <br>
     <input type="text" ng-model="tooltipcontent" placeholder="Enter tooltip text">
@@ -7,7 +6,7 @@
       <button class="btn btn-success btn-width" tooltip="Submit tool tip text">Submit</button>
       <button class="btn btn-danger btn-width" tooltip="Cancel tooltip text">Cancel</button>
   </div>
-  
+
   <div style="width:500px;height:300px">
       <br>
     <input type="text" ng-model="tooltipcontent" placeholder="Enter tooltip text">
@@ -17,5 +16,9 @@
       <button class="btn btn-danger btn-width" tooltip="Cancel tooltip text">Cancel</button>
   </div>
 
-  
+  <div [tooltip]="graphicComponent">
+    Graphics tooltip here...
+  </div>
+
+
 </div>

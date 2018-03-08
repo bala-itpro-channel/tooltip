@@ -9,7 +9,6 @@ import { TooltipDemoComponent } from './tooltip-demo/tooltipdemo.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { TooltipDemoModule } from './tooltip-demo/tooltipdemo.module';
 import { GraphicsTooltipComponent } from './graphics-tooltip/graphics-tooltip.component';
-
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'tooltipdemo', loadChildren : './tooltip-demo/tooltipdemo.module#TooltipDemoModule' },
@@ -29,7 +28,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [GraphicsTooltipComponent]
 })
 
 export class AppModule { }
