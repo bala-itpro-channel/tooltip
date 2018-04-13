@@ -8,17 +8,24 @@ import { HomeComponent } from './home/home.component';
 import { TooltipDemoComponent } from './tooltip-demo/tooltipdemo.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { TooltipDemoModule } from './tooltip-demo/tooltipdemo.module';
+import { PipeDemoRoutingModule } from './pipe-demo/pipe-demo.router';
 import { GraphicsTooltipComponent } from './graphics-tooltip/graphics-tooltip.component';
 import { TooltipContainerComponent, TooltipContainerDirective } from './shared/tooltip-container';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'tooltipdemo', loadChildren : './tooltip-demo/tooltipdemo.module#TooltipDemoModule' },
+  { path: 'pipedemo', loadChildren : './pipe-demo/pipe-demo.module#PipeDemoModule' },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/pagenotfound' },
 ];
 
 @NgModule({
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(appRoutes),
+    SharedModule
+  ],
   declarations: [
     AppComponent,
     HomeComponent,
@@ -27,10 +34,7 @@ const appRoutes: Routes = [
     TooltipContainerComponent,
     TooltipContainerDirective
   ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(appRoutes)
-  ],
+  exports: [],
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [TooltipContainerComponent, GraphicsTooltipComponent]
