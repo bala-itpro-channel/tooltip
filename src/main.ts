@@ -26,4 +26,7 @@ platformBrowserDynamic().bootstrapModule(AppModule, {
     {provide: TRANSLATIONS_FORMAT, useValue: 'xlf'}
   ]
 })
+.then(() => {
+  console.log('success');
+})
 .catch(err => console.log(err));
