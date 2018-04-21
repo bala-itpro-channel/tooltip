@@ -9,7 +9,18 @@ import { RouterModule, Routes } from '@angular/router';
 })
 export class AppComponent {
   title = 'app';
-  onSubmit(f: NgForm){
-    alert('Work in progress. comming soon...')
+  onSubmit(f: NgForm) {
+    alert('Work in progress. comming soon...');
+  }
+
+  langClick(lang) {
+    if (localStorage.getItem('localeId') && lang !== localStorage.getItem('localeId')) {
+      localStorage.removeItem('localeId');
+      localStorage.setItem('localeId', lang);
+    } else {
+      localStorage.setItem('localeId', lang);
+    }
+
+    location.reload(true);
   }
 }

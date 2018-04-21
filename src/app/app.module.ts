@@ -1,5 +1,5 @@
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -35,7 +35,9 @@ const appRoutes: Routes = [
     TooltipContainerDirective
   ],
   exports: [],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: (localStorage.getItem('localeId') ? localStorage.getItem('localeId') : 'en') }
+  ],
   bootstrap: [AppComponent],
   entryComponents: [TooltipContainerComponent, GraphicsTooltipComponent]
 })

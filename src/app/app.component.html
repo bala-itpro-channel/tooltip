@@ -19,6 +19,9 @@
           <li><a [routerLink]="['/tooltipdemo']">Tooltip demo</a></li>
           <li><a [routerLink]="['/pipedemo']">Pipes demo</a></li>
         </ul>
+        <div style="float: right">
+          <button (click)="langClick('en')">En</button> | <button  (click)="langClick('fr')">Fr</button>
+        </div>
         <form class="navbar-form navbar-right" #myForm (ngSubmit)="onSubmit(myForm)" novalidate>
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Search">

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+   <trans-unit id="ConsentDialogContent" datatype="html">
+        <target>
+      <![CDATA[
+            <p>French text</p>
+        ]]>
+        </target>
+      </trans-unit>
+    <trans-unit id="AngularTooltipProject" datatype="html">
+        <target>
+         Angular 5 Tooltip Project Fr
+        </target>
+      </trans-unit>
+      <trans-unit id="tm-text" datatype="html">
+        <target>
+          Company Brand&trade;
+        </target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
