@@ -12,8 +12,12 @@ import { PipeDemoRoutingModule } from './pipe-demo/pipe-demo.router';
 import { GraphicsTooltipComponent } from './graphics-tooltip/graphics-tooltip.component';
 import { TooltipContainerComponent, TooltipContainerDirective } from './shared/tooltip-container';
 
+import { ComponentInteractionComponent } from './component-interaction/component-interaction.component';
+import { ComponentInteractionSiblingComponent } from './component-interaction/component-interaction-sibling.component';
+import { ComponentInteractionContainerComponent } from './component-interaction/component-interaction-container.component';
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
+  { path: 'compinteraction', component: ComponentInteractionContainerComponent },
   { path: 'tooltipdemo', loadChildren : './tooltip-demo/tooltipdemo.module#TooltipDemoModule' },
   { path: 'pipedemo', loadChildren : './pipe-demo/pipe-demo.module#PipeDemoModule' },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -32,7 +36,10 @@ const appRoutes: Routes = [
     GraphicsTooltipComponent,
     PagenotfoundComponent,
     TooltipContainerComponent,
-    TooltipContainerDirective
+    TooltipContainerDirective,
+    ComponentInteractionContainerComponent,
+    ComponentInteractionComponent,
+    ComponentInteractionSiblingComponent
   ],
   exports: [],
   providers: [
