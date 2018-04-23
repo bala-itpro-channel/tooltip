@@ -15,6 +15,8 @@ import { TooltipContainerComponent, TooltipContainerDirective } from './shared/t
 import { ComponentInteractionComponent } from './component-interaction/component-interaction.component';
 import { ComponentInteractionSiblingComponent } from './component-interaction/component-interaction-sibling.component';
 import { ComponentInteractionContainerComponent } from './component-interaction/component-interaction-container.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'compinteraction', component: ComponentInteractionContainerComponent },
@@ -26,6 +28,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   imports: [
+    FormsModule,
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     SharedModule
