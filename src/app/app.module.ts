@@ -16,9 +16,10 @@ import { ComponentInteractionComponent } from './component-interaction/component
 import { ComponentInteractionSiblingComponent } from './component-interaction/component-interaction-sibling.component';
 import { ComponentInteractionContainerComponent } from './component-interaction/component-interaction-container.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { AnimationSamplesComponent } from './animation-samples/animation-samples.component';
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
+  { path: 'animation', component: AnimationSamplesComponent },
   { path: 'compinteraction', component: ComponentInteractionContainerComponent },
   { path: 'tooltipdemo', loadChildren : './tooltip-demo/tooltipdemo.module#TooltipDemoModule' },
   { path: 'pipedemo', loadChildren : './pipe-demo/pipe-demo.module#PipeDemoModule' },
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
     TooltipContainerDirective,
     ComponentInteractionContainerComponent,
     ComponentInteractionComponent,
-    ComponentInteractionSiblingComponent
+    ComponentInteractionSiblingComponent,
+    AnimationSamplesComponent
   ],
   exports: [],
   providers: [
